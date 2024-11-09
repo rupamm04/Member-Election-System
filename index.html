@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+    <link rel="icon"  href="{{ url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>Member Election System</h1>
+        <div id="menu">
+            <button onclick="showPanel('student')">Student Panel</button>
+            <button onclick="showPanel('admin')">Admin Panel</button>
+            <button onclick="exitSystem()">Exit</button>
+        </div>
+
+        <div id="student-panel" class="panel" style="display:none;">
+            <h2>Student Panel</h2>
+            <input type="text" id="student-id" placeholder="Enter your User ID" />
+            <button onclick="checkVotingStatus()">Check Voting Status</button>
+            <br /><br />
+            <input type="text" id="vote-candidate" placeholder="Enter Candidate ID to vote" />
+            <button onclick="castVote()">Vote</button>
+            <div id="student-message"></div>
+        </div>
+
+        <div id="admin-panel" class="panel" style="display:none;">
+            <h2>Admin Panel</h2>
+            <input type="text" id="admin-username" placeholder="Enter Admin Username" />
+            <input type="password" id="admin-password" placeholder="Enter Admin Password" />
+            <button onclick="authenticateAdmin()">Login</button>
+            <div id="admin-options" style="display:none;">
+                <h3>Welcome Admin</h3>
+                <button onclick="initiateNewElection()">New Election</button>
+                <button onclick="continueElection()">Continue Election</button>
+                <button onclick="deleteVote()">Delete Illegal Vote</button>
+                <button onclick="banUser()">Ban User IDs</button>
+                <button onclick="displayResults()">Display Results</button>
+                <button onclick="logout()">Logout</button>
+            </div>
+            <div id="results"></div> <!-- Area to display results -->
+            <div id="admin-message"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
